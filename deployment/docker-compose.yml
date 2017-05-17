@@ -1,0 +1,16 @@
+version: '3'
+services:
+  frontend:
+    image: com.upc.sqa/simple-frontend:v0.1
+    container_name: simple-frontend
+    depends_on:
+          - api
+    links:
+       - api:spring-api
+    ports:
+     - "8090:8080"
+  api:
+    image: com.upc.sqa/spring-api:v0.1
+    container_name: spring-api
+    ports:
+     - "8091"
