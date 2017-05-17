@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>SQA Jenkins practice</title>
+    </head>
+
+    <script type="application/javascript">
+        function greet() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'api/v1/greet');
+            xhr.send(null);
+
+            xhr.onreadystatechange = function () {
+                var DONE = 4; // readyState 4 means the request is done.
+                var OK = 200; // status 200 is a successful return.
+                if (xhr.readyState === DONE) {
+                    if (xhr.status === OK)
+                        document.getElementById("greetMessage").innerHTML = xhr.responseText;
+                } else {
+                    console.log('Error: ' + xhr.status); // An error occurred during the request.
+                }
+            };
+        };
+    </script>
+
+    <body>
+        <div>
+            <button id="greetButton" onclick="greet()" type="button">Greet!</button>
+            <p id="greetMessage"></p>
+        </div>
+    </body>
+</html>
